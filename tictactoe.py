@@ -20,59 +20,61 @@ def make_move(board, symbol, var):
     board[index] = symbol
     return board
 
-# initialize board
-board = ["a1","a2","a3","b1","b2","b3","c1", "c2", "c3"]
-print_board(board)
-print("Player1 = X, Player2 = O")
-player = ["Player 1", "Player 2"]
+if __name__ == "__main__":
 
-game = True
+    # initialize board
+    board = ["a1","a2","a3","b1","b2","b3","c1", "c2", "c3"]
+    print_board(board)
+    print("Player1 = X, Player2 = O")
+    player = ["Player 1", "Player 2"]
 
-while game:
-    for i in range(9):
-        if i%2 ==0: 
-            p = player[0]
-            symbol = "X"
-        else: 
-            p = player[1]
-            symbol = "O"
+    game = True
 
-        print(f'{p} choose a field: ')
-        var = input(' ')
+    while game:
+        for i in range(9):
+            if i%2 ==0: 
+                p = player[0]
+                symbol = "X"
+            else: 
+                p = player[1]
+                symbol = "O"
 
-        if var in board:
-            make_move(board, symbol, var)
+            print(f'{p} choose a field: ')
+            var = input(' ')
+
+            if var in board:
+                make_move(board, symbol, var)
             
-        else:
-            # check for incorrect input
-            input_wrong=True
-            while input_wrong:
-                var = input("Choose another field:")       
-                if var in board:
-                    make_move(board, symbol, var)
-                    input_wrong=False   
+            else:
+                # check for incorrect input
+                input_wrong=True
+                while input_wrong:
+                    var = input("Choose another field:")       
+                    if var in board:
+                        make_move(board, symbol, var)
+                        input_wrong=False   
         
 
-        print_board(board)
+            print_board(board)
 
-        if check_winner(board) == True: 
-            print(f'{p} won!')
+            if check_winner(board) == True: 
+                print(f'{p} won!')
+                break
+
+        if check_winner(board) == False: 
+            print("It's a tie")
+
+        print("You want to play one more time? Y/N")    
+        var = input(' ')
+        if var == 'N': 
+            game = False
             break
-
-    if check_winner(board) == False: 
-        print("It's a tie")
-
-    print("You want to play one more time? Y/N")    
-    var = input(' ')
-    if var == 'N': 
-        game = False
-        break
-    if var == 'Y': 
-        board = ["a1","a2","a3","b1","b2","b3","c1", "c2", "c3"]
-    else:
-        input_wrong=True
-        while input_wrong:
-            var = input("Please type 'Y' or 'N': ")       
-            if var == 'Y' or var == 'N':
-                input_wrong=False   
+        if var == 'Y': 
+            board = ["a1","a2","a3","b1","b2","b3","c1", "c2", "c3"]
+        else:
+            input_wrong=True
+            while input_wrong:
+                var = input("Please type 'Y' or 'N': ")       
+                if var == 'Y' or var == 'N':
+                    input_wrong=False   
         
