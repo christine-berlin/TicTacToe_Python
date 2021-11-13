@@ -39,7 +39,8 @@ if __name__ == "__main__":
                 p = player[1]
                 symbol = "O"
 
-            print(f'{p} choose a field: ')
+            #print(f'{p} choose a field: ')
+            print('{} choose a field: '.format(p))
             var = input(' ')
 
             if var in board:
@@ -75,6 +76,9 @@ if __name__ == "__main__":
             input_wrong=True
             while input_wrong:
                 var = input("Please type 'Y' or 'N': ")       
-                if var == 'Y' or var == 'N':
+                if var == 'Y':
+                    game=True
                     input_wrong=False   
-        
+                if var == 'N':
+                    game=False
+                    input_wrong=False
